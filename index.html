@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Indonesian | IT Engineer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind Configuration for Dark Mode & Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    },
+                    animation: {
+                        'shimmer': 'shimmer 2.5s infinite linear',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink-caret': 'blink-caret .75s step-end infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        },
+                        typing: {
+                            from: { width: '0' },
+                            to: { width: '100%' }
+                        },
+                        'blink-caret': {
+                            'from, to': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#3b82f6' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Scrollbar for aesthetic */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        /* Menu Icon Animation */
+        @keyframes navIconAnim {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(-15deg); }
+            50% { transform: scale(1.2) rotate(15deg); }
+            75% { transform: scale(1.2) rotate(-15deg); }
+        }
+        .group:hover .nav-icon-anim {
+            animation: navIconAnim 0.5s ease-in-out;
+        }
+
+        /* Hero Text Underline Animation (Updated for new layout) */
+        .animated-underline-new {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline-new::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 4px;
+            background: #3b82f6; /* Solid primary color */
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: drawUnderline 1s cubic-bezier(0.2, 1, 0.2, 1) forwards 1s; /* Delayed start */
+        }
+        @keyframes drawUnderline {
+            100% { transform: scaleX(1); }
+        }
+        
+        /* NEW: Waving Hand Animation */
+        @keyframes wave-animation {
+            0% { transform: rotate( 0.0deg) }
+            10% { transform: rotate(14.0deg) }
+            20% { transform: rotate(-8.0deg) }
+            30% { transform: rotate(14.0deg) }
+            40% { transform: rotate(-4.0deg) }
+            50% { transform: rotate(10.0deg) }
+            60% { transform: rotate( 0.0deg) }
+            100% { transform: rotate( 0.0deg) }
+        }
+        .wave-hand {
+            display: inline-block;
+            transform-origin: 70% 70%;
+            animation: wave-animation 2.5s infinite;
+        }
+
+        /* NEW: Shining Text Gradient for Name */
+        .name-shine {
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #06b6d4, #3b82f6, #1e3a8a);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine-text 4s linear infinite;
+        }
+        .dark .name-shine {
+            background: linear-gradient(90deg, #60a5fa, #93c5fd, #ffffff, #93c5fd, #60a5fa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes shine-text {
+            to { background-position: 200% center; }
+        }
+
+        /* NEW: Profile Photo Float and Ping Animation */
+        @keyframes float-profile {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .profile-card-wrapper {
+            animation: float-profile 4s ease-in-out infinite;
+        }
+        @keyframes ping-slow {
+            75%, 100% { transform: scale(2.2); opacity: 0; }
+        }
+        .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        
+        /* Typewriter effect wrapper */
+        .typewriter-wrapper {
+            display: inline-block;
+            overflow: hidden; 
+            white-space: nowrap;
+            border-right: .15em solid #3b82f6;
+            animation: 
+                typing 1.5s steps(30, end) forwards,
+                blink-caret .75s step-end infinite;
+            max-width: 100%;
+        }
+
+        /* Role Text Staggered Animation */
+        .role-item {
+            opacity: 0;
+            display: inline-block;
+            animation: slideUpFadeRole 0.6s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+        }
+        @keyframes slideUpFadeRole {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer Text Animation */
+        .footer-text-animate {
+            display: inline-block;
+            background: linear-gradient(90deg, #93c5fd, #ffffff, #93c5fd);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 3s linear infinite, floatText 3s ease-in-out infinite;
+        }
+        .dark .footer-text-animate {
+            background: linear-gradient(90deg, #60a5fa, #ffffff, #60a5fa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes shineText {
+            to { background-position: 200% center; }
+        }
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* Project Buttons Styling */
+        .project-btn {
+            display:inline-flex; align-items:center; gap:.55rem;
+            padding:.85rem 1.5rem; border-radius:16px;
+            font-weight:700; color:#fff;
+            box-shadow:0 10px 25px rgba(0,0,0,.18);
+            transition:.3s ease; text-decoration:none;
+            border:2px solid rgba(255,255,255,.25);
+            overflow: hidden;
+            position: relative;
+        }
+        .project-btn:hover { transform:translateY(-4px) scale(1.04); filter:brightness(1.08) }
+        
+        /* New Layout Card Style */
+        .hero-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+        .dark .hero-card {
+            background: #1e293b;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+
+        /* NEW: Gallery Thumbnail Styles */
+        .gallery-thumb {
+            transition: all 0.3s ease;
+        }
+        .gallery-thumb:not(.active-thumb) img {
+            opacity: 0.6;
+            filter: grayscale(30%);
+        }
+        .gallery-thumb:not(.active-thumb):hover img {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .gallery-thumb.active-thumb {
+            border-color: #3b82f6; /* Tailwind primary-500 */
+        }
+        .gallery-thumb.active-thumb img {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* NEW: Lightbox Custom Styles */
+        #lightbox {
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+        }
+
+        .tech-pill {
+            transition: all 0.3s ease;
+        }
+        .tech-pill:hover {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Scroll Reveal Animation */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Nav Link Animations Enhancements */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2563eb;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .dark .nav-link::after { background-color: #60a5fa; }
+        .nav-link:hover::after {
+            visibility: visible;
+            width: 100%;
+        }
+        
+        /* Client Link Button Enhancements (Smaller for more items) */
+        .client-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .client-link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .client-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .client-link-btn:hover::before {
+            left: 100%;
+        }
+
+        .client-link-btn .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+
+        .client-link-btn .btn-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .client-link-btn:hover .btn-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .client-link-btn .btn-arrow {
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+
+        .client-link-btn:hover .btn-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        .client-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .client-2 { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+        .client-3 { background: linear-gradient(135deg, #10b981, #34d399); }
+        .client-4 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .client-5 { background: linear-gradient(135deg, #ef4444, #f87171); }
+
+        .instruction-text {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+        
+        /* Modernized Social Buttons */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem; /* 44px */
+            height: 2.75rem;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            background: #f1f5f9; /* slate-100 */
+            border: 1px solid #e2e8f0; /* slate-200 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .dark .social-btn {
+            background: #1e293b; /* slate-800 */
+            border-color: #334155; /* slate-700 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .social-btn i {
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        /* Brand Colors for Icons */
+        .social-btn-wa i { color: #25D366; }
+        .social-btn-wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3); }
+        
+        .social-btn-email i { color: #EA4335; }
+        .social-btn-email:hover { background: #EA4335; border-color: #EA4335; box-shadow: 0 8px 15px rgba(234, 67, 53, 0.3); }
+        
+        .social-btn-linkedin i { color: #0A66C2; }
+        .social-btn-linkedin:hover { background: #0A66C2; border-color: #0A66C2; box-shadow: 0 8px 15px rgba(10, 102, 194, 0.3); }
+
+        .social-btn-location i { color: #ef4444; }
+        .social-btn-location:hover { background: #ef4444; border-color: #ef4444; box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3); }
+
+        .social-btn:hover { transform: translateY(-4px) scale(1.05); }
+        .social-btn:hover i { color: white; transform: scale(1.1); }
+
+        /* Notification Badge for Location */
+        .badge-ping {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 10px;
+            height: 10px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .dark .badge-ping {
+            border-color: #1e293b;
+        }
+
+        /* Modernized CV Download Button (Reverted to Blue Original Theme) */
+        .btn-cv-download {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            font-weight: 700;
+            border-radius: 9999px; /* fully rounded */
+            padding: 0.65rem 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+            border: none;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .btn-cv-download:hover {
+            background-color: #2563eb; /* blue-600 */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        }
+        .btn-cv-download i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .btn-cv-download:hover i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Timeline Interactive Styles */
+        .timeline-line { transition: background-color 0.3s ease; }
+        .timeline-icon-container { transition: all 0.3s ease; cursor: pointer; }
+        .job-card { transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent; }
+        
+        .timeline-item.inactive .timeline-icon-container {
+            border-color: #e2e8f0;
+            color: #94a3b8;
+            background-color: #f8fafc;
+        }
+        .dark .timeline-item.inactive .timeline-icon-container {
+            border-color: #334155;
+            color: #64748b;
+            background-color: #1e293b;
+        }
+        .timeline-item.inactive .job-card {
+            opacity: 0.7;
+            transform: scale(0.98);
+        }
+
+        .timeline-item.active .timeline-icon-container {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: #eff6ff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .dark .timeline-item.active .timeline-icon-container {
+            background-color: rgba(30, 58, 138, 0.3);
+        }
+        .timeline-item.active .job-card {
+            opacity: 1;
+            transform: scale(1);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Project Card Enhancements */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .dark .project-card:hover {
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-darkBg dark:text-slate-100 font-sans antialiased">
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-2.5 sm:py-3">
+                <!-- LOGO AND ALWAYS-VISIBLE STATS CONTAINER -->
+                <div class="flex-shrink-0 flex flex-col justify-center gap-1.5">
+                    <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <div class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center group-hover:bg-primary-200 dark:group-hover:bg-primary-800/50 transition-colors duration-300">
+                            <i class="fa-solid fa-network-wired text-primary-600 dark:text-primary-400 text-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"></i>
+                        </div>
+                        <span class="font-extrabold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300">Alan's Portfolio</span>
+                    </div>
+                    
+                    <!-- Stats: Always visible below Logo -->
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 ml-0 sm:ml-10 text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-eye text-primary-500/70"></i>
+                            <span>Views: <span id="visitor-count" class="text-slate-800 dark:text-slate-200 font-bold">...</span></span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-globe text-primary-500/70"></i>
+                            <span>Your IP: <span id="visitor-ip" class="text-slate-800 dark:text-slate-200 font-bold">...</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a class="nav-link flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group" href="#about">
+                        <i class="fa-solid fa-user-tie text-primary-500/80 nav-icon-anim"></i>About
+                    </a>
+                    <a class="nav-link flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group" href="#experience">
+                        <i class="fa-solid fa-briefcase text-primary-500/80 nav-icon-anim"></i>Experience
+                    </a>
+                    <a class="nav-link flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group" href="#skills">
+                        <i class="fa-solid fa-laptop-code text-primary-500/80 nav-icon-anim"></i>Skills, Languages &amp; Strengths
+                    </a>
+                    <a class="nav-link flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group" href="#certifications">
+                        <i class="fa-solid fa-award text-primary-500/80 nav-icon-anim"></i>Certifications &amp; Training
+                    </a>
+                    <a class="nav-link flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group" href="#projects">
+                        <i class="fa-solid fa-diagram-project text-primary-500/80 nav-icon-anim"></i>Projects
+                    </a>
+                    <!-- Theme Toggle -->
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition transform hover:rotate-12 duration-300" id="theme-toggle">
+                        <i class="fa-solid fa-moon text-slate-700 dark:text-slate-300" id="theme-icon"></i>
+                    </button>
+                    <!-- Fullscreen Toggle -->
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition transform hover:scale-110 duration-300" id="fullscreen-toggle" title="Toggle Fullscreen">
+                        <i class="fa-solid fa-expand text-slate-700 dark:text-slate-300" id="fullscreen-icon"></i>
+                    </button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition" id="fullscreen-toggle-mobile" title="Toggle Fullscreen">
+                        <i class="fa-solid fa-expand text-slate-700 dark:text-slate-300" id="fullscreen-icon-mobile"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition" id="theme-toggle-mobile">
+                        <i class="fa-solid fa-moon text-slate-700 dark:text-slate-300" id="theme-icon-mobile"></i>
+                    </button>
+                    <button class="text-slate-700 dark:text-slate-300 focus:outline-none" id="mobile-menu-btn">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div class="hidden md:hidden bg-white dark:bg-darkBg border-b border-slate-200 dark:border-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a class="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#about">
+                    <i class="fa-solid fa-user-tie text-primary-500 w-5 text-center nav-icon-anim"></i>About
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#experience">
+                    <i class="fa-solid fa-briefcase text-primary-500 w-5 text-center nav-icon-anim"></i>Experience
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#skills">
+                    <i class="fa-solid fa-laptop-code text-primary-500 w-5 text-center nav-icon-anim"></i>Skills, Languages &amp; Strengths
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#certifications">
+                    <i class="fa-solid fa-award text-primary-500 w-5 text-center nav-icon-anim"></i>Certifications &amp; Training
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#projects">
+                    <i class="fa-solid fa-diagram-project text-primary-500 w-5 text-center nav-icon-anim"></i>Projects
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (REFINED LAYOUT & COMPACT IMAGE) -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-[1100px] mx-auto" id="about">
+        <!-- Main Clean Layout Container -->
+        <div class="bg-white dark:bg-darkCard rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] dark:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-slate-800 reveal-on-scroll">
+            
+            <!-- Core Content (Image + Text) -->
+            <div class="flex flex-col md:flex-row gap-8 lg:gap-10 items-start">
+                
+                <!-- Left Side: Compact Image container with NEW ANIMATIONS -->
+                <div class="w-full sm:w-auto flex-shrink-0 flex justify-center md:justify-start">
+                    <div class="profile-card-wrapper relative mt-2 md:mt-0">
+                        <!-- Decorative background pulse -->
+                        <div class="absolute -inset-2 bg-gradient-to-tr from-primary-400 to-cyan-300 rounded-3xl blur-lg opacity-40 dark:opacity-20 animate-pulse"></div>
+                        
+                        <!-- Main Image Card -->
+                        <div class="w-48 sm:w-52 md:w-56 lg:w-60 aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_-5px_rgba(59,130,246,0.3)] dark:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.5)] border-4 border-white dark:border-slate-700 relative group z-10 bg-slate-100 dark:bg-slate-800">
+                            <img alt="Alan Jalu Prasetyo" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" src="fotoku.jpg"/>
+                            <!-- Subtle dark overlay on hover -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        </div>
+
+                        <!-- Animated Floating Badge on the corner -->
+                        <div class="absolute -bottom-3 -right-3 z-20 flex items-center justify-center cursor-help" title="Verified Professional">
+                            <div class="absolute inset-0 bg-primary-500 rounded-full animate-ping-slow opacity-60"></div>
+                            <div class="relative bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+                                <i class="fa-solid fa-check-double text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Content and Info -->
+                <div class="w-full md:flex-1 flex flex-col justify-start">
+                    
+                    <!-- NEW: Greeting and Name with Wave and Shine Animations -->
+                    <div class="mb-5">
+                        <span class="text-lg sm:text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-1">
+                            <span class="wave-hand text-2xl">👋</span> Hi, my name is 
+                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold inline-block">
+                            <span class="animated-underline-new uppercase tracking-tight ml-1 relative inline-block">
+                                <span class="name-shine">Alan Jalu Prasetyo</span>
+                            </span>
+                        </h1>
+                    </div>
+
+                    <!-- NEW: Roles with Highlight Box and Pulsing Icon -->
+                    <div class="flex items-start gap-4 mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-700 group">
+                        
+                        <!-- Animated Icon Container -->
+                        <div class="relative flex-shrink-0 mt-0.5">
+                            <div class="absolute inset-0 bg-primary-400 rounded-full blur animate-ping-slow opacity-40"></div>
+                            <div class="relative bg-gradient-to-br from-primary-500 to-cyan-500 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-md transform group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-network-wired text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Role Text -->
+                        <h2 class="text-[13px] sm:text-sm md:text-[15px] font-medium text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <strong class="text-slate-900 dark:text-white font-bold">An experienced professional</strong> with a strong background as <br class="hidden xl:block">
+                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.2s">Network Engineer</span>, 
+                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.4s">IT Operation Tech Support</span>, 
+                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.6s">Cloud Engineer</span>, and 
+                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.8s">Microsoft 365 Admin</span>.
+                        </h2>
+                    </div>
+
+                    <!-- Short Bio / Intro -->
+                    <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        I am an IT Infrastructure &amp; Network Engineer with over 5 years of professional experience designing, deploying, and maintaining company network infrastructure across coal mining, manufacturing, and banking industries. I'm currently open to new opportunities, international relocation (Visa Sponsorship), and remote roles. Reach out to discuss potential roles or projects.
+                    </p>
+
+                    <!-- Contact & Actions Row (Clean, attractive soft buttons) -->
+                    <div class="flex gap-3 mb-8">
+                        <a class="social-btn social-btn-wa group" href="https://wa.me/6285179604836" target="_blank" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a class="social-btn social-btn-email group" href="mailto:id.alan14prasetyo@gmail.com" title="Email">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                        <a class="social-btn social-btn-linkedin group" href="https://www.linkedin.com/in/i-am-alan/" target="_blank" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a class="social-btn social-btn-location group" href="https://maps.app.goo.gl/EmqGEW6amhcsNLESA" target="_blank" title="Location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span class="badge-ping animate-ping"></span>
+                        </a>
+                    </div>
+                    
+                    <!-- CV Download Section -->
+                    <div class="mb-4">
+                        <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium italic mb-2.5">
+                            If you would like to view or print my latest CV, please download the file below
+                        </p>
+                        <a href="https://drive.google.com/open?id=1z1LPxhfNna_LY5EsuUhbGM2qLFuVoDPU&usp=drive_fs" target="_blank" class="btn-cv-download group">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            View my updated CV (.PDF)
+                        </a>
+                    </div>
+
+                </div>
+            </div> <!-- End Flex Content -->
+
+            <!-- Education / Summary Quote Box (Exact Match to Lampiran) -->
+            <div class="mt-8 bg-white dark:bg-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-700 relative overflow-hidden flex flex-col sm:flex-row gap-4 sm:items-start group hover:shadow-md transition-all duration-300">
+                <!-- Thick blue left border effect -->
+                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-500 rounded-l-2xl"></div>
+                
+                <div class="flex-shrink-0 pt-0.5 ml-1">
+                    <i class="fa-solid fa-graduation-cap text-primary-500 text-2xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <p class="text-[13px] sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Bachelor's of Computer Science (Informatics Engineering) acting as a Network and Infrastructure Engineer with extensive work experience in <strong class="text-slate-900 dark:text-white font-bold">Coal Mining</strong>, <strong class="text-slate-900 dark:text-white font-bold">Manufacturing</strong>, and <strong class="text-slate-900 dark:text-white font-bold">Banking IT Services</strong> industries.
+                    </p>
+                    
+                    <div>
+                        <a href="https://drive.google.com/file/d/1na3gl_YNMm_qg_EgzjCzVHj1sv9S91tE/view?usp=sharing" target="_blank" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold group/link transition-colors">
+                            <i class="fa-solid fa-scroll text-amber-500 group-hover/link:rotate-12 transition-transform"></i>
+                            View graduation certificate
+                            <i class="fa-solid fa-arrow-right font-light text-primary-500 group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Clean Sleek Stats Row -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 reveal-on-scroll">
+            <!-- Experience -->
+            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-full bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 shrink-0"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">5+ Yrs</h3>
+                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Experience</p>
+                </div>
+            </div>
+            <!-- Roles -->
+            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-500 shrink-0"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">6</h3>
+                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Roles</p>
+                </div>
+            </div>
+            <!-- Certifications -->
+            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-500 shrink-0"><i class="fa-solid fa-award"></i></div>
+                <div>
+                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">6+</h3>
+                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Certs</p>
+                </div>
+            </div>
+            <!-- Projects -->
+            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center text-rose-500 shrink-0"><i class="fa-solid fa-diagram-project"></i></div>
+                <div>
+                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">5+</h3>
+                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-slate-100 dark:bg-slate-900/50 transition-colors" id="experience">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-on-scroll">
+                <h2 class="text-xl font-bold mb-8 text-center text-slate-900 dark:text-white">
+                    <i class="fa-solid fa-briefcase text-primary-500 mr-3 inline-block hover:-translate-y-1 transition-transform duration-300"></i>Professional Experience
+                </h2>
+                <p class="text-center text-slate-500 mb-8 -mt-6 text-sm italic">Click on a card to highlight the experience timeline</p>
+            </div>
+            
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-300 dark:before:bg-slate-700" id="experience-timeline">
+                
+                <div class="timeline-item active relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-network-wired text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">IT Network Infrastructure Services (Foreman)</h3>
+                            <span class="text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0">Jan 2025 - Present</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Kapuas Bara Utama (Argo Manunggal Group) | Coal Mining Company</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Managed corporate IT infrastructure and network operations across head office, mining site office, warehouse office, weighbridge office, jetty office, hub transit office, ensuring stable and secure connectivity.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Planned, deployed, configured, documented, maintained, relocated, and troubleshot enterprise network infrastructure, including LAN, WAN, wireless networks, VPN connectivity, routing, switching, and internet distribution.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Administered Microsoft 365 services including user accounts, security groups, Microsoft Teams, and Exchange Online to support daily business operations and collaboration.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Managed company web hosting, domain registration, DNS configuration, corporate email services, and related communication infrastructure.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed, maintained, and supported desktops, laptops, printers, CCTV systems, video recorders, 2-way radio communication systems (base station radios and handheld radios), networking devices, and other IT assets throughout the organization.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Executed IT infrastructure deployments including installation, configuration, testing, documentation, relocation, dismantling, and user handover while ensuring compliance with company standards.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Produced technical documentation, infrastructure topology, deployment reports, maintenance records, and project handover documents while providing regular operational updates during team meetings.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1UmTRxYfgJ15JJluV9uMuLYT7_M1Dq-OD/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item inactive relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-server text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">IT Foreman &amp; Area Coordinator</h3>
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap mt-2 sm:mt-0">Jun 2024 - Jan 2025</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Sasmaka Lestari Karya | Mining Contractor</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Managed IT infrastructure and operational technology (OT) systems across multiple mining operational sites, ensuring stable network connectivity, infrastructure availability, and uninterrupted business operations.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Planned, installed, configured, documented, maintained, relocated, dismantled, and troubleshot enterprise IT infrastructure, including network devices, LAN connectivity, communication systems, and end-user equipment.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Supported Fleet Management System (FMS) infrastructure, including mobile trailer CCTV surveillance systems, 2-way radio communication systems (base station radios and handheld radios), and other operational technology (OT) platforms to ensure continuous field communication and operational monitoring.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed, configured, tested, deployed, and handed over desktops, laptops, printers, CCTV systems, communication devices, and other enterprise IT assets while ensuring operational readiness and proper documentation.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Prepared and maintained technical documentation, deployment records, infrastructure updates, maintenance reports, and operational status reports to support IT governance, project tracking, and team collaboration.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1kvSr0KeF3_mWQMHjhT2XA67uK0OqrIG1/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item inactive relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">IT Support</h3>
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap mt-2 sm:mt-0">Oct 2023 - Mar 2024</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Mandiri Herindo Adiperkasa, Tbk | Mining Contractor</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Provided first-level technical support for desktops, laptops, printers, network connectivity, 2-way radio communication systems (base station radios and handheld radios), CCTV, and Fleet GPS tracking devices used in mining and hauling operations, ensuring reliable daily business activities.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed, configured, documented, maintained, and troubleshot enterprise IT devices and operational technology equipment while ensuring proper installation standards and operational readiness.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Diagnosed and resolved hardware, software, network, and communication system issues by providing timely technical assistance and minimizing operational downtime.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Provided user guidance and basic technical training on the proper use of IT equipment and operational systems to improve productivity and reduce recurring technical issues.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1OOYu6Zpk8joWeQv9TQP-qi-cu5jxIqpG/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item inactive relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-cloud text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">ICT Engineer</h3>
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap mt-2 sm:mt-0">Dec 2022 - Oct 2023</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Global Smart Solusindo | IT Services for Mining Company</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Delivered IT infrastructure and operational support for PT Cipta Kridatama mining sites across East and South Kalimantan, ensuring reliable IT services, infrastructure availability, and uninterrupted business operations.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Planned, installed, configured, documented, maintained, relocated, dismantled, and troubleshot enterprise IT infrastructure, including LAN connectivity, network devices, communication systems, and end-user equipment.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Managed enterprise IT assets, including desktops, laptops, printers, network devices, CCTV systems, video recorders, and 2-way radio communication systems (base station radios and handheld radios), while maintaining accurate asset documentation.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Collaborated with General Affairs (GA) & Facility teams to manage IT assets, operational technology equipment, and infrastructure supporting daily mining operations.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed, configured, tested, deployed, and handed over IT equipment to end users while ensuring operational readiness, proper documentation, and compliance with company standards.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Prepared and maintained technical documentation, deployment records, asset inventories, maintenance reports, and operational status reports to support IT governance and project execution.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1qly49zO2jKB7gKIY4sKdSawmQA_prDpY/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item inactive relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-laptop-code text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">IT Services Contractor (IT Support)</h3>
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap mt-2 sm:mt-0">Sep 2021 - Dec 2022</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Bina Area Persada | Japan Tobacco International, Manufacturing</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Provided first and second-level technical support for Microsoft 365 applications, desktops, laptops, printers, meeting room systems, and enterprise network connectivity while ensuring reliable day-to-day business operations.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed, configured, tested, maintained, and documented enterprise IT hardware and software according to JTI Global IT standards, ensuring compliance and operational readiness before deployment to end users.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Coordinated network infrastructure deployment, configuration, and monitoring activities for factory production environments while maintaining stable network connectivity and supporting manufacturing operations.</li>
+							<li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Performed first-level diagnostics, troubleshooting, maintenance, and minor repairs for enterprise printers while coordinating with authorized vendors for advanced hardware servicing.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Prepared technical documentation, deployment records, operational reports, and weekly project updates to support IT governance, operational visibility, and continuous service improvement.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1XqXv-Fy3R8-7MnIO7sIqdBS39iUg1Zr7/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item inactive relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" onclick="activateTimelineItem(this)">
+                    <div class="timeline-icon-container flex items-center justify-center w-12 h-12 rounded-full border-2 border-white bg-slate-50 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-darkCard dark:border-slate-800 dark:text-slate-400 z-10">
+                        <i class="fa-solid fa-microchip text-lg"></i>
+                    </div>
+                    <div class="job-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-darkCard p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h3 class="font-bold text-base text-slate-900 dark:text-white">Hardware/Customer Engineer</h3>
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap mt-2 sm:mt-0">Nov 2018 - May 2019</span>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1 flex items-start gap-1.5">
+                            <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 mt-[3px]"></i>
+                            <span class="leading-snug">PT Intikom Berlian Mustika | Managed Services Company (BCA Bank project - Bali, Jayapura &amp; Timika)</span>
+                        </h4>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
+                            <i class="fa-solid fa-location-dot"></i> Location: Indonesia
+                        </div>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-[13px] mb-4">
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Performed preventive and corrective maintenance, inspection, and repair of Bank BCA E-CRM and ATM machines to ensure maximum service availability.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Installed and commissioned new E-CRM/ATM machines at newly established Bank BCA branch and service locations.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Prepared detailed daily maintenance reports after every onsite service and customer visit.</li>
+                            <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Compiled monthly maintenance and operational reports for project performance tracking and SLA compliance.</li>
+                        </ul>
+                        <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 dark:bg-slate-800/50 text-primary-600 dark:text-primary-400 font-semibold text-xs sm:text-[13px] transition-all duration-300 group shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:-translate-y-1 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800" href="https://drive.google.com/file/d/1Wfr-nX6kYGo5sHISMV7fpB_43Zwc_-_3/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-file-pdf text-red-500 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 text-base"></i>
+                                view my employment certificate
+                                <i class="fa-solid fa-arrow-right text-[10px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="skills">
+        <h2 class="text-xl font-bold text-center mb-10 text-slate-900 dark:text-white reveal-on-scroll">
+            <i class="fa-solid fa-gears text-primary-500 mr-3 inline-block hover:rotate-90 transition-transform duration-500"></i>
+            Technical Expertise
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-7 group hover:-translate-y-2 hover:shadow-2xl hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -inset-4 bg-gradient-to-r from-blue-100 to-transparent opacity-0 group-hover:opacity-10 dark:from-blue-900 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="flex items-center gap-4 mb-6 relative z-10">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <i class="fa-solid fa-network-wired text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Corporate Networking</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 relative z-10">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Network Architecture Design (LAN, WAN, VLAN, IP Planning &amp; Subnetting)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Routing &amp; Switching (Static, OSPF, Inter-VLAN, Core &amp; Distribution Layer)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Firewall, NAT, Network Security &amp; Anti-DDoS Protection</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Next Generation Firewall (Fortinet FortiGate)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>VPN (IPSec, L2TP, PPTP, WireGuard, Site-to-Site)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Wireless Network (PTP/PTMP &amp; Site Coverage)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Bandwidth Management &amp; QoS</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Hotspot, Captive Portal, RADIUS &amp; User Management</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-blue-500/70 mt-1 text-xs shrink-0"></i><span>Multi-WAN Failover &amp; Load Balancing</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-7 group hover:-translate-y-2 hover:shadow-2xl hover:border-green-300 dark:hover:border-green-700 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -inset-4 bg-gradient-to-r from-green-100 to-transparent opacity-0 group-hover:opacity-10 dark:from-green-900 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="flex items-center gap-4 mb-6 relative z-10">
+                    <div class="w-14 h-14 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Monitoring &amp; Operations</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 relative z-10">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-green-500/70 mt-1 text-xs shrink-0"></i><span>Network Monitoring (The Dude &amp; Zabbix)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-green-500/70 mt-1 text-xs shrink-0"></i><span>Network Troubleshooting &amp; Root Cause Analysis</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-green-500/70 mt-1 text-xs shrink-0"></i><span>Network Documentation &amp; Topology Mapping</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-green-500/70 mt-1 text-xs shrink-0"></i><span>Infrastructure Preventive Maintenance</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-green-500/70 mt-1 text-xs shrink-0"></i><span>IT Asset &amp; Operational Management</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-7 group hover:-translate-y-2 hover:shadow-2xl hover:border-cyan-300 dark:hover:border-cyan-700 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -inset-4 bg-gradient-to-r from-cyan-100 to-transparent opacity-0 group-hover:opacity-10 dark:from-cyan-900 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="flex items-center gap-4 mb-6 relative z-10">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <i class="fa-solid fa-cloud text-2xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Microsoft &amp; Cloud</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 relative z-10">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Microsoft 365 Admin Center</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Microsoft Exchange Online</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Microsoft Entra ID (Azure AD)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>SharePoint Administration</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Azure Virtual Machines</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Cloud VPS Hosting Management</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>Virtualization (Hyper-V, VMware &amp; VirtualBox)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-cyan-500/70 mt-1 text-xs shrink-0"></i><span>MikroTik CHR (Cloud Hosted Router)</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-7 group hover:-translate-y-2 hover:shadow-2xl hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -inset-4 bg-gradient-to-r from-purple-100 to-transparent opacity-0 group-hover:opacity-10 dark:from-purple-900 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="flex items-center gap-4 mb-6 relative z-10">
+                    <div class="w-14 h-14 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                        <i class="fa-solid fa-code text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Network &amp; Development Tools</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 relative z-10">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>Networking: MikroTik, Winbox RouterOS, FortiGate, Ruijie Reyee, Ruijie Cloud, Ubiquiti, HP Aruba, Cisco</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>Monitoring: The Dude, Winbox, Zabbix, PRTG</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>Speedtest, Ping, Traceroute, nslookup, PuTTY, Wireshark, WiFi Analyzer</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>Remote Apps: AnyDesk, TeamViewer, UltraViewer, Remote Desktop</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>Development Tools: Visual Studio Code, Git, GitHub, PostgreSQL</span></li>
+					<li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-purple-500/70 mt-1 text-xs shrink-0"></i><span>AI Tools: ChatGPT, Gemini, Claude</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-24 mb-10 reveal-on-scroll">
+            <h2 class="text-xl font-bold text-center mb-10 text-slate-900 dark:text-white">
+                <i class="fa-solid fa-language text-primary-500 mr-3 inline-block hover:-rotate-12 transition-transform duration-300 text-2xl"></i>
+                Language Proficiency
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:border-red-300 dark:hover:border-red-700/50 relative overflow-hidden">
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-red-200 dark:border-red-800">
+                            🇮🇩
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white">Bahasa Indonesia</h3>
+                            <p class="text-sm font-medium text-red-500 dark:text-red-400 mt-0.5">Native Speaker</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700/50 relative overflow-hidden">
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-blue-200 dark:border-blue-800">
+                            🇬🇧
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white">English</h3>
+                            <p class="text-sm font-medium text-blue-500 dark:text-blue-400 mt-0.5">Intermediate Proficiency</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-700/50 relative overflow-hidden">
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-amber-200 dark:border-amber-800 relative">
+                            🇩🇪
+                            <span class="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full border-2 border-white dark:border-darkCard animate-pulse"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white">Deutsch (German)</h3>
+                            <p class="text-sm font-medium text-amber-500 dark:text-amber-400 mt-0.5">Basic / Currently Learning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <h2 class="text-xl font-bold text-center mb-10 text-slate-900 dark:text-white reveal-on-scroll">
+                <i class="fa-solid fa-user-check text-primary-500 mr-3 inline-block hover:scale-110 transition-transform duration-300"></i>
+                Professional Strengths
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-5"><i class="fa-solid fa-brain text-2xl text-purple-600"></i></div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Critical Thinking</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">Strong analytical mindset in identifying root causes and delivering long-term infrastructure solutions.</p>
+                </div>
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-5"><i class="fa-solid fa-bolt text-2xl text-amber-600"></i></div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Fast Response</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">Highly responsive in handling user complaints, network incidents, and disruptions in mission-critical environments.</p>
+                </div>
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-5"><i class="fa-solid fa-users text-2xl text-blue-600"></i></div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">User-Focused</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">Intensive coordination with end-users and stakeholders to clearly understand operational needs.</p>
+                </div>
+                <div class="bg-white dark:bg-darkCard rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-5"><i class="fa-solid fa-chart-line text-2xl text-green-600"></i></div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Continuous Improvement</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">Consistently improving stability, security, and efficiency of network and system environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-slate-100 dark:bg-slate-900/50" id="certifications">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-on-scroll">
+                <h2 class="text-xl font-bold mb-4 text-center text-slate-900 dark:text-white">
+                    <i class="fa-solid fa-award text-primary-500 mr-3 inline-block hover:rotate-[360deg] transition-transform duration-700"></i>Certifications
+                </h2>
+                <p class="text-center text-slate-500 mb-10 text-sm italic">Click "Verify Credential" to validate my certificates directly</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-[#00a4ef] hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-brands fa-microsoft text-2xl text-[#00a4ef] mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">Microsoft Certified: Azure Fundamentals (AZ-900)</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by Microsoft | June 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-[#00a4ef] hover:text-blue-700 dark:hover:text-blue-400 transition-colors mt-4" href="https://learn.microsoft.com/api/credentials/share/en-us/AlanJaluPrasetyo-2199/AC39C07F0C9F0F32?sharingId=C7A8D1E9B930C76D" target="_blank">
+                        Verify: AC39C07F0C9F0F32 <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-[#00a4ef] hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-brands fa-microsoft text-2xl text-[#00a4ef] mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">Microsoft Applied Skills: Administer AD Domain Services</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by Microsoft | June 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-[#00a4ef] hover:text-blue-700 dark:hover:text-blue-400 transition-colors mt-4" href="https://learn.microsoft.com/api/credentials/share/en-us/AlanJaluPrasetyo-2199/1BC13347795B0BA7?sharingId=C7A8D1E9B930C76D" target="_blank">
+                        Verify: 1BC13347795B0BA7 <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-[#00a4ef] hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-brands fa-microsoft text-2xl text-[#00a4ef] mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">Microsoft Applied Skills: Identities &amp; Access via Entra</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by Microsoft | June 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-[#00a4ef] hover:text-blue-700 dark:hover:text-blue-400 transition-colors mt-4" href="https://learn.microsoft.com/api/credentials/share/en-us/AlanJaluPrasetyo-2199/C6F74415D9ADE4BF?sharingId=C7A8D1E9B930C76D" target="_blank">
+                        Verify: C6F74415D9ADE4BF <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-[#4285F4] hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-brands fa-google text-2xl text-[#4285F4] mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">IT Support Google Professional Certificate</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by Coursera | June 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-[#4285F4] hover:text-blue-700 dark:text-blue-400 transition-colors mt-4" href="https://www.coursera.org/account/accomplishments/professional-cert/NUGEZZDFRXMM" target="_blank">
+                        Verify: NUGEZZDFRXMM <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-slate-700 dark:border-slate-400 hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-solid fa-network-wired text-2xl text-slate-700 dark:text-slate-300 mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">MikroTik Certified Network Associate (MTCNA)</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by MikroTik (Citraweb Solusi) | Feb 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors mt-4" href="https://mikrotik.com/training/certificates/c288826c1998a3110536" target="_blank">
+                        Verify: 2402NA8826 <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-[#E60012] hover:-translate-y-1 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-solid fa-wifi text-2xl text-[#E60012] mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">Ruijie Specialist Engineer (for Reyee)</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by Ruijie Reyee | Feb 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-[#E60012] hover:text-red-700 dark:hover:text-red-400 transition-colors mt-4" href="https://drive.google.com/file/d/13TSlvuVb4hP98K3meKc7pacNQCai-epw/view?usp=sharing" target="_blank">
+                        Verify: RGX00256067 <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-darkCard p-6 rounded-2xl shadow-lg flex flex-col justify-between border-t-4 border-purple-500 hover:-translate-y-1 transition-transform duration-300 md:col-span-2 lg:col-span-3 lg:w-1/3 lg:mx-auto">
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-solid fa-language text-2xl text-purple-500 mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight">English Proficiency Certification (CEFR C2 - Proficient)</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Issued by International English Test | May 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="inline-flex items-center text-sm font-semibold text-purple-600 hover:text-purple-700 dark:text-purple-400 transition-colors mt-4" href="https://internationalenglishtest.com/verify-certificate/7591751C18-7591751C7D-759174D115/" target="_blank">Verify: 7591751C18-7591751C7D-759174D115 <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENHANCED Projects Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="projects">
+        <div class="text-center mb-14 reveal-on-scroll">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white"><i class="fa-solid fa-laptop-code text-primary-500 mr-3"></i>Highlighted Projects</h2>
+            <p class="mt-3 text-slate-500 text-sm italic">Selected corporate infrastructure and software projects</p>
+        </div>
+
+        <!-- Card Project 1: Portfolio Website Development -->
+        <div class="project-card bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 mt-12">
+            <!-- Grid Layout Matches Other Projects -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                
+                <!-- BAGIAN 1: Judul & Lokasi -->
+                <div class="lg:col-start-2 lg:row-start-1 flex flex-col justify-end">
+                    <h3 class="text-xl lg:text-lg font-bold text-slate-900 dark:text-white mb-2">Portfolio Website Development</h3>
+                    <div class="flex flex-col xl:flex-row xl:items-center gap-2">
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Location: Private Client (Freelance Project)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- BAGIAN 2: Gambar & Tombol (UPDATED TO SINGLE IMAGE GALLERY STYLE) -->
+                <div class="lg:col-start-1 lg:row-span-3 flex flex-col project-gallery">
+                    <!-- Main Large Image with Lightbox feature -->
+                    <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden cursor-zoom-in group shadow-md bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700" onclick="openLightbox(this)">
+                        <img class="main-gallery-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="DisplayShowCase.png" alt="Web Development Project"/>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                                <i class="fa-solid fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Instruction below image -->
+                    <p class="text-xs text-center text-slate-500 mt-3 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Click image to enlarge</p>
+
+                    <!-- Client Links section moved below image -->
+                    <div class="flex flex-col mt-6">
+                        <div class="flex items-center gap-2 mb-3 instruction-text text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-hand-point-down text-primary-500 text-lg animate-bounce"></i>
+                            <span class="text-xs font-semibold italic">Click the buttons below to view my client's portfolio websites:</span>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2.5">
+                            <a href="https://portfolio-fajarmusakkar.vercel.app/" target="_blank" class="client-link-btn client-1 group">
+                                <div class="btn-content">
+                                    <div class="btn-icon-wrapper">
+                                        <i class="fa-solid fa-user-tie text-sm"></i>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] font-medium uppercase tracking-widest opacity-80 mb-0.5">Live Client Website</span>
+                                        <span class="text-[13px] font-bold tracking-wide">Fajar Musakkar's Portfolio</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+                            </a>
+
+                            <a href="https://portfolio-bambang-suswanto.vercel.app/" target="_blank" class="client-link-btn client-2 group">
+                                <div class="btn-content">
+                                    <div class="btn-icon-wrapper">
+                                        <i class="fa-solid fa-user-tie text-sm"></i>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] font-medium uppercase tracking-widest opacity-80 mb-0.5">Live Client Website</span>
+                                        <span class="text-[13px] font-bold tracking-wide">Bambang Suswanto's Portfolio</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+                            </a>
+
+                            <a href="https://portfolio-batri.vercel.app/" target="_blank" class="client-link-btn client-3 group">
+                                <div class="btn-content">
+                                    <div class="btn-icon-wrapper">
+                                        <i class="fa-solid fa-user-tie text-sm"></i>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] font-medium uppercase tracking-widest opacity-80 mb-0.5">Live Client Website</span>
+                                        <span class="text-[13px] font-bold tracking-wide">Batri's Portfolio</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAGIAN 3: Deskripsi & Overview -->
+                <div class="lg:col-start-2 lg:row-start-2 flex flex-col justify-start">
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Project Overview</h4>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-7 mb-5">Designed and developed a modern, fully responsive personal portfolio website to effectively showcase professional experience, certifications, and technical projects. The website features a clean UI/UX with smooth scroll animations, an interactive experience timeline, and a dynamic dark/light theme toggle functionality to enhance user engagement and accessibility.</p>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Scope &amp; Responsibilities</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>End-to-end front-end web development using pure HTML, modern CSS, and Vanilla JavaScript</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Implementation of Tailwind CSS framework for responsive design across mobile, tablet, and desktop devices</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Custom UI/UX design including glassmorphism effects, CSS keyframe animations, and interactive components</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Integration of dynamic Dark/Light mode with system preference detection and local storage memory</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Code optimization and seamless deployment to modern web hosting platforms</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-3">Technologies &amp; Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">HTML5</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Tailwind CSS</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">JavaScript</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">FontAwesome</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Git</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card Project 2: Company Network Infrastructure -->
+        <div class="project-card bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 mt-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Title & Location -->
+                <div class="lg:col-start-2 lg:row-start-1 flex flex-col justify-end">
+                    <h3 class="text-xl lg:text-lg font-bold text-slate-900 dark:text-white mb-2">Company Network Infrastructure for Multi-Site Mining</h3>
+                    <div class="flex flex-col xl:flex-row xl:items-center gap-2">
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Location: PT Kapuas Bara Utama (Head Office, Site, Indonesia)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- INTERACTIVE GALLERY -->
+                <div class="lg:col-start-1 lg:row-span-3 flex flex-col project-gallery">
+                    <!-- Main Large Image -->
+                    <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden cursor-zoom-in group shadow-md bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700" onclick="openLightbox(this)">
+                        <img class="main-gallery-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="Global-Network-Topology.jpg" alt="Main Network Infrastructure Image"/>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                                <i class="fa-solid fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Thumbnails Container -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="gallery-thumb active-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="NMS-HO.jpg" alt="Infrastructure 1"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="CR-Traffic.jpg" alt="Infrastructure 2"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="CR-Interface.jpg" alt="Infrastructure 3"/>
+                        </div>
+						<div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="NetworkTopolgy-Site.jpg" alt="Infrastructure 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="CR-Site.jpg" alt="Infrastructure 3"/>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-3 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Click thumbnails to switch, click main image to enlarge</p>
+                </div>
+
+                <!-- Description -->
+                <div class="lg:col-start-2 lg:row-start-2 flex flex-col justify-start">
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Project Overview</h4>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-7 mb-5">Designed, deployed, and maintained a secure corporate network infrastructure connecting multiple mining operation sites through cloud-based VPS services and private network technologies. Configured dynamic and static routing, site-to-site VPN tunnels, VLAN segmentation, firewall policies, and centralized traffic management to ensure secure communication between the Head Office, Mining Area, Hauling Road, Stockpile, and Coal Jetty locations. Delivered a highly available, scalable, and resilient network architecture capable of supporting mission-critical mining applications, operational systems, and business services while maintaining security, performance, and reliability.</p>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Scope &amp; Responsibilities</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Network architecture design for multi-site operations (HO, Mining Area, Hauling Road, Stockpile, Jetty)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Core routing design using MikroTik (RouterOS v6 & v7)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Secure site-to-site VPN and cloud integration (VPS-based CHR)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Dynamic routing implementation (OSPF) with controlled static routing</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Network segmentation (VLAN)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>High availability &amp; failover strategy</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-3">Technologies &amp; Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">MikroTik</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">FortiGate</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">OSPF</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">WireGuard</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">CHR VPS</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">VLAN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card Project 3: Captive Portal -->
+        <div class="project-card bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 mt-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Title & Location -->
+                <div class="lg:col-start-2 lg:row-start-1 flex flex-col justify-end">
+                    <h3 class="text-xl lg:text-lg font-bold text-slate-900 dark:text-white mb-2">User Authentication Captive Portal / Hotspot Gateway</h3>
+                    <div class="flex flex-col xl:flex-row xl:items-center gap-2">
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Location: PT Kapuas Bara Utama (Mining Site, Indonesia)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- INTERACTIVE GALLERY -->
+                <div class="lg:col-start-1 lg:row-span-3 flex flex-col project-gallery">
+                    <!-- Main Large Image -->
+                    <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden cursor-zoom-in group shadow-md bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700" onclick="openLightbox(this)">
+                        <img class="main-gallery-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="Loginpage-Captive-Portal.jpg" alt="Cyber Security Login Gateway"/>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                                <i class="fa-solid fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Thumbnails Container -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="gallery-thumb active-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="LoginSuccess-Captive-Portal.jpg" alt="Captive Portal 1"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="InformationStatus-Captive-Portal.jpg" alt="Captive Portal 2"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="LogoutSuccess-Captive-Portal.jpg" alt="Captive Portal 3"/>
+                        </div>
+						<div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Request-Form-Internet-Access.jpg" alt="Captive Portal 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Hotspot-Server.jpg" alt="Captive Portal 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Hotspot-User-Active.jpg" alt="Captive Portal 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Hotspot-Device-Binding.jpg" alt="Captive Portal 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Hotspot-Queue.jpg" alt="Captive Portal 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Hotspot-Firewall.jpg" alt="Captive Portal 3"/>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-3 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Click thumbnails to switch, click main image to enlarge</p>
+                </div>
+
+                <!-- Description -->
+                <div class="lg:col-start-2 lg:row-start-2 flex flex-col justify-start">
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Project Overview</h4>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-7 mb-5">Design, implement, and optimize a User Authentication Captive Portal / Hotspot Gateway to securely and centrally control user network access. This system is used to authenticate users before gaining access to the internal network or access to the internet through the company's server gateway. This method is very suitable for implementation in mining environments that want to limit access according to user needs and user accounts are stored by each user according to employee identity.</p>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Key Contributions</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Network architecture design for Hotspot Gateway</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Implementation of Captive Portal authentication system</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>User access control and policy enforcement</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Network security enhancement and abuse prevention</li>
+                    </ul>
+
+					<h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Implemented Features</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Username &amp; Password-Based User Authentication</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Web-Based Captive Portal Login (HTTP/HTTPS)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Automatic Redirect after Login &amp; Logout</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>User Profiles, Session Time Limits &amp; Bandwidth Management</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-3">Technologies &amp; Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">MikroTik RouterOS</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Hotspot Server</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Firewall</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">NAT</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Mangle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Project 4: Server Rack Wire Management -->
+        <div class="project-card bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 mt-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Title & Location -->
+                <div class="lg:col-start-2 lg:row-start-1 flex flex-col justify-end">
+                    <h3 class="text-xl lg:text-lg font-bold text-slate-900 dark:text-white mb-2">Server Rack Wire Management Installation</h3>
+                    <div class="flex flex-col xl:flex-row xl:items-center gap-2">
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Location: Japan Tobacco International (Pasuruan, East Java), PT Mandiri Herindo Adiperkasa Tbk (Mining Site, East Kalimantan)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- INTERACTIVE GALLERY -->
+                <div class="lg:col-start-1 lg:row-span-3 flex flex-col project-gallery">
+                    <!-- Main Large Image -->
+                    <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden cursor-zoom-in group shadow-md bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700" onclick="openLightbox(this)">
+                        <img class="main-gallery-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="WireManagement-PTKDM.jpg" alt="Server Rack Management"/>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                                <i class="fa-solid fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Thumbnails Container -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="gallery-thumb active-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="WireManagement-PTMHA.jpg" alt="Rack Mgmt 1"/>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-3 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Click thumbnails to switch, click main image to enlarge</p>
+                </div>
+
+                <!-- Description -->
+                <div class="lg:col-start-2 lg:row-start-2 flex flex-col justify-start">
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Project Overview</h4>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-7 mb-5">Structured server rack installation project focused on improving reliability, cable management and maintenance efficiency across corporate infrastructure.</p>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Key Contributions</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Structured installation and organization of power and data cabling</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Cable labeling to simplify identification and troubleshooting</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Implementation based on data center best practices with minimal downtime</li>
+                    </ul>
+
+					<h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Outcome</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Clean, organized, and manageable server racks</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Improved operational efficiency for IT team</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Scalable infrastructure ready for future expansion</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-3">Technologies &amp; Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Server Rack</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">UTP</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Fiber</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Patch Panel</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Cable Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Project 5: Game-Net -->
+        <div class="project-card bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 mt-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Title & Location -->
+                <div class="lg:col-start-2 lg:row-start-1 flex flex-col justify-end">
+                    <h3 class="text-xl lg:text-lg font-bold text-slate-900 dark:text-white mb-2">Game-Net Core Network re-Architecture</h3>
+                    <div class="flex flex-col xl:flex-row xl:items-center gap-2">
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Location: Vortex Arena (South Jakarta, Indonesia)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- INTERACTIVE GALLERY -->
+                <div class="lg:col-start-1 lg:row-span-3 flex flex-col project-gallery">
+                    <!-- Main Large Image -->
+                    <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden cursor-zoom-in group shadow-md bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700" onclick="openLightbox(this)">
+                        <img class="main-gallery-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="GameBilling-Vortex.jpg" alt="Game Net Architecture"/>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                                <i class="fa-solid fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Thumbnails Container -->
+                    <div class="grid grid-cols-3 gap-3 mt-4">
+                        <div class="gallery-thumb active-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Interface-CR-Vortex.jpg" alt="GameNet 1"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Bridge-CR-Vortex.jpg" alt="GameNet 2"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Firewall-Vortex.jpg" alt="GameNet 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Route-Queue-Vortex.jpg" alt="GameNet 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="Telegram-Bot-Vortex.jpg" alt="GameNet 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="The-Dude-Vortex.jpg" alt="Infrastructure 3"/>
+                        </div>
+                        <div class="gallery-thumb w-full h-20 md:h-24 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent relative shadow-sm" onclick="changeMainImage(this)">
+                            <img class="w-full h-full object-cover" src="PING-Check-Vortex.jpg" alt="Infrastructure 3"/>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-3 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Click thumbnails to switch, click main image to enlarge</p>
+                </div>
+
+                <!-- Description -->
+                <div class="lg:col-start-2 lg:row-start-2 flex flex-col justify-start">
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Project Overview</h4>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-7 mb-5">This project focused on the redesign and reconfiguration of the core network infrastructure for a high-traffic gaming arena environment. The objective was to deliver low-latency, stable, and highly available connectivity to support competitive online gaming, customer access, and internal operations.</p>
+
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Key Contributions</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Core network redesign and reconfiguration</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Traffic optimization for gaming workloads (latency-sensitive traffic)</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Firewall and bandwidth management tuning</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Production deployment with zero major downtime</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Production Support &amp; Monitoring</h4>
+                    <ul class="text-[13px] text-slate-600 dark:text-slate-300 space-y-2 mb-5">
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>24/7 real-time monitoring from cloud-based MikroTik CHR</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Telegram Bot integration for instant alerts and incident notification</li>
+                        <li class="flex items-start gap-2 hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-check-circle text-green-500 mt-0.5 shrink-0"></i>Direct coordination channel with business owner</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-3">Technologies &amp; Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">MikroTik</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">CHR</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Telegram Bot</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">Firewall</span>
+                        <span class="tech-pill px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium cursor-default">QoS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <!-- UPDATED FOOTER TEXT: ANIMATION AND SLIGHTLY SMALLER -->
+            <h2 class="text-base sm:text-lg font-bold mb-6 footer-text-animate">Let's connect &amp; work together</h2>
+            
+            <div class="flex justify-center gap-8 mb-8">
+                <a class="text-slate-400 hover:text-[#25D366] transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 text-4xl" href="https://wa.me/6285179604836" target="_blank" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a class="text-slate-400 hover:text-[#EA4335] transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 text-4xl" href="mailto:id.alan14prasetyo@gmail.com" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a class="text-slate-400 hover:text-[#0A66C2] transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 text-4xl" href="https://www.linkedin.com/in/i-am-alan/" target="_blank" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+            <p class="text-slate-500 text-sm">
+                © <span id="year"></span> Developed by Alan Jalu Prasetyo. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL CONTAINER -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-slate-900/90 hidden items-center justify-center transition-opacity duration-300 opacity-0 pointer-events-none" style="z-index: 9999;">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white bg-slate-800/50 hover:bg-slate-700 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged Project Image" class="max-w-[90%] max-h-[90vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ----------------------------------------------------
+        // VISITOR COUNTER & IP FETCHING LOGIC
+        // ----------------------------------------------------
+        async function fetchVisitorData() {
+            // Fetch User IP
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                document.getElementById('visitor-ip').textContent = ipData.ip;
+            } catch (error) {
+                console.error("Error fetching IP:", error);
+                document.getElementById('visitor-ip').textContent = "Unavailable";
+            }
+
+            // Fetch Visitor Count
+            try {
+                // Using CounterAPI.dev for better stability
+                const countResponse = await fetch('https://api.counterapi.dev/v1/alan-portfolio-2026/visits/up');
+                if (countResponse.ok) {
+                    const countData = await countResponse.json();
+                    const viewCount = countData.count;
+                    // Format number with commas (e.g., 1,000)
+                    const formattedCount = new Intl.NumberFormat('en-US').format(viewCount);
+                    document.getElementById('visitor-count').textContent = formattedCount;
+                } else {
+                    document.getElementById('visitor-count').textContent = "N/A";
+                }
+            } catch (error) {
+                console.error("Error fetching visitor count:", error);
+                document.getElementById('visitor-count').textContent = "N/A";
+            }
+        }
+
+        // Call the function on load
+        fetchVisitorData();
+
+
+        // ----------------------------------------------------
+        // GALLERY & LIGHTBOX JAVASCRIPT FUNCTIONS
+        // ----------------------------------------------------
+        function changeMainImage(thumbElement) {
+            const newSrc = thumbElement.querySelector('img').src;
+            const galleryContainer = thumbElement.closest('.project-gallery');
+            const mainImg = galleryContainer.querySelector('.main-gallery-img');
+            
+            mainImg.style.opacity = 0.5;
+            setTimeout(() => {
+                mainImg.src = newSrc;
+                mainImg.style.opacity = 1;
+            }, 150);
+
+            const allThumbs = galleryContainer.querySelectorAll('.gallery-thumb');
+            allThumbs.forEach(t => t.classList.remove('active-thumb'));
+            
+            thumbElement.classList.add('active-thumb');
+        }
+
+        function openLightbox(mainImgContainer) {
+            const imgSrc = mainImgContainer.querySelector('img').src;
+            const lightbox = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imgSrc;
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxImg.src = '';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && !document.getElementById('lightbox-modal').classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+
+        // ----------------------------------------------------
+        // UI INTERACTION SCRIPTS
+        // ----------------------------------------------------
+        function activateTimelineItem(clickedItem) {
+            const allItems = document.querySelectorAll('.timeline-item');
+            
+            allItems.forEach(item => {
+                item.classList.remove('active');
+                item.classList.add('inactive');
+            });
+            
+            clickedItem.classList.remove('inactive');
+            clickedItem.classList.add('active');
+        }
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const htmlElement = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            setIconsToSun();
+        } else {
+            htmlElement.classList.remove('dark');
+            setIconsToMoon();
+        }
+
+        function setIconsToSun() {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeIconMobile.classList.remove('fa-moon');
+            themeIconMobile.classList.add('fa-sun');
+        }
+
+        function setIconsToMoon() {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            themeIconMobile.classList.remove('fa-sun');
+            themeIconMobile.classList.add('fa-moon');
+        }
+
+        function toggleTheme() {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                setIconsToMoon();
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                setIconsToSun();
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+
+        // ----------------------------------------------------
+        // FULLSCREEN TOGGLE SCRIPT
+        // ----------------------------------------------------
+        const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
+        const fullscreenIcon = document.getElementById('fullscreen-icon');
+        const fullscreenToggleMobileBtn = document.getElementById('fullscreen-toggle-mobile');
+        const fullscreenIconMobile = document.getElementById('fullscreen-icon-mobile');
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                // Masuk Fullscreen
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+            } else {
+                // Keluar Fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        function updateFullscreenIcons() {
+            const isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+            if (!isFullscreen) {
+                if(fullscreenIcon) { fullscreenIcon.classList.remove('fa-compress'); fullscreenIcon.classList.add('fa-expand'); }
+                if(fullscreenIconMobile) { fullscreenIconMobile.classList.remove('fa-compress'); fullscreenIconMobile.classList.add('fa-expand'); }
+            } else {
+                if(fullscreenIcon) { fullscreenIcon.classList.remove('fa-expand'); fullscreenIcon.classList.add('fa-compress'); }
+                if(fullscreenIconMobile) { fullscreenIconMobile.classList.remove('fa-expand'); fullscreenIconMobile.classList.add('fa-compress'); }
+            }
+        }
+
+        if(fullscreenToggleBtn) fullscreenToggleBtn.addEventListener('click', toggleFullScreen);
+        if(fullscreenToggleMobileBtn) fullscreenToggleMobileBtn.addEventListener('click', toggleFullScreen);
+
+        // Mendengarkan perubahan status fullscreen (misal user tekan tombol ESC)
+        document.addEventListener('fullscreenchange', updateFullscreenIcons);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcons);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcons);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcons);
+
+    </script>
+</body>
+</html>
