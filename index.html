@@ -421,7 +421,7 @@
         .social-btn:hover { transform: translateY(-4px) scale(1.05); }
         .social-btn:hover i { color: white; transform: scale(1.1); }
 
-        /* Notification Badge for Location */
+        /* Notification Badge & Tooltip for Social Buttons */
         .badge-ping {
             position: absolute;
             top: -2px;
@@ -435,33 +435,74 @@
         .dark .badge-ping {
             border-color: #1e293b;
         }
-
-        /* Modernized CV Download Button (Reverted to Blue Original Theme) */
-        .btn-cv-download {
-            background-color: #3b82f6; /* blue-500 */
+        .social-tooltip {
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px) scale(0.9);
+            background: #0f172a;
             color: white;
-            font-weight: 700;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 20;
+        }
+        .dark .social-tooltip {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+        .social-btn:hover .social-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        /* Modernized CV Download Button (Sleek, Compact, Animated) */
+        .btn-cv-download {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            font-weight: 600;
             border-radius: 9999px; /* fully rounded */
-            padding: 0.65rem 1.4rem;
+            padding: 0.45rem 1.15rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.55rem;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-            border: none;
-            font-size: 0.875rem; /* text-sm */
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem; /* compact size */
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cv-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease-in-out;
+        }
+        .btn-cv-download:hover::before {
+            left: 100%;
         }
         .btn-cv-download:hover {
-            background-color: #2563eb; /* blue-600 */
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
         }
         .btn-cv-download i {
-            font-size: 1rem;
+            font-size: 0.875rem;
             transition: transform 0.3s ease;
         }
         .btn-cv-download:hover i {
-            transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.15) rotate(-6deg);
         }
 
         /* Timeline Interactive Styles */
@@ -613,22 +654,22 @@
                 
                 <!-- Left Side: Compact Image container with NEW ANIMATIONS -->
                 <div class="w-full sm:w-auto flex-shrink-0 flex justify-center md:justify-start">
-                    <div class="profile-card-wrapper relative mt-2 md:mt-0">
+                    <div class="profile-card-wrapper relative mt-8 sm:mt-10 md:mt-12">
                         <!-- Decorative background pulse -->
                         <div class="absolute -inset-2 bg-gradient-to-tr from-primary-400 to-cyan-300 rounded-3xl blur-lg opacity-40 dark:opacity-20 animate-pulse"></div>
                         
                         <!-- Main Image Card -->
-                        <div class="w-48 sm:w-52 md:w-56 lg:w-60 aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_-5px_rgba(59,130,246,0.3)] dark:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.5)] border-4 border-white dark:border-slate-700 relative group z-10 bg-slate-100 dark:bg-slate-800">
+                        <div class="w-40 sm:w-44 md:w-48 lg:w-52 aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_-5px_rgba(59,130,246,0.3)] dark:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.5)] border-4 border-white dark:border-slate-700 relative group z-10 bg-slate-100 dark:bg-slate-800">
                             <img alt="Alan Jalu Prasetyo" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" src="fotoku.jpg"/>
                             <!-- Subtle dark overlay on hover -->
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                         </div>
 
-                        <!-- Animated Floating Badge on the corner -->
-                        <div class="absolute -bottom-3 -right-3 z-20 flex items-center justify-center cursor-help" title="Verified Professional">
-                            <div class="absolute inset-0 bg-primary-500 rounded-full animate-ping-slow opacity-60"></div>
-                            <div class="relative bg-white dark:bg-slate-800 border-2 border-primary-500 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                                <i class="fa-solid fa-check-double text-sm"></i>
+                        <!-- Animated Floating Verified Badge on Top Left -->
+                        <div class="absolute -top-3 -left-3 z-20 flex items-center justify-center cursor-help" title="Verified Professional">
+                            <div class="absolute inset-0 bg-emerald-500 rounded-full animate-ping-slow opacity-60"></div>
+                            <div class="relative bg-white dark:bg-slate-800 border-2 border-emerald-500 text-emerald-500 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm sm:text-base"></i>
                             </div>
                         </div>
                     </div>
@@ -648,46 +689,125 @@
                         </h1>
                     </div>
 
-                    <!-- NEW: Roles with Highlight Box and Pulsing Icon -->
-                    <div class="flex items-start gap-4 mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-700 group">
-                        
-                        <!-- Animated Icon Container -->
-                        <div class="relative flex-shrink-0 mt-0.5">
-                            <div class="absolute inset-0 bg-primary-400 rounded-full blur animate-ping-slow opacity-40"></div>
-                            <div class="relative bg-gradient-to-br from-primary-500 to-cyan-500 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-md transform group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-solid fa-network-wired text-sm"></i>
+                    <!-- Animated Professional Roles Header (Compact Inline Text matching capture 2) -->
+                    <div class="mb-3.5 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs sm:text-[13px] font-bold text-slate-700 dark:text-slate-300">
+                        <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.1s">
+                            Network Engineer
+                        </span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.3s">
+                            IT Operation Technical Support
+                        </span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.5s">
+                            Cloud Engineer
+                        </span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.7s">
+                            Microsoft 365 Administrator
+                        </span>
+                    </div>
+
+                    <!-- Availability & Relocation Banner Badge -->
+                    <div class="mb-5 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500/10 via-primary-500/10 to-emerald-500/10 border border-amber-500/30 dark:border-amber-400/20 text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] font-semibold shadow-2xs hover:shadow-xs transition-all duration-300">
+                        <span class="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                            <i class="fa-solid fa-passport text-sm text-amber-500 animate-pulse"></i>
+                            Open to International Relocation (Visa Sponsorship)
+                        </span>
+                        <span class="hidden sm:inline text-slate-300 dark:text-slate-600 font-normal">|</span>
+                        <span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
+                            <i class="fa-solid fa-laptop-house text-sm text-emerald-500"></i>
+                            Open for Remote Jobs
+                        </span>
+                    </div>
+
+                    <!-- Short Bio / Intro Box -->
+                    <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 border-l-[6px] border-l-primary-500 dark:border-l-primary-400 shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-5 mb-6 group">
+                        <div class="space-y-2.5">
+                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                I am currently based in <strong class="text-slate-900 dark:text-white font-semibold">Sragen, Central Java, Indonesia</strong>. I work full-time for one of Indonesia’s coal mining companies as an <span class="text-primary-600 dark:text-primary-400 font-semibold">IT Network Infrastructure Services</span>. With more <span class="font-semibold text-slate-800 dark:text-slate-200">5+ years of professional experience</span> across the coal mining, manufacturing, and banking industries, I specialize in Network Engineer, IT Operations Support, IT Helpdesk services, Microsoft 365 Administration, and Cloud Technologies.
+                            </p>
+                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                I have supported mission-critical environments across Head Office, mining sites, remote facilities, mining production and distribution operations, with a strong focus on network availability, security, business continuity, and efficient day-to-day operations.
+                            </p>
+                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                In addition to my core expertise, I am currently expanding my skills in <span class="text-primary-600 dark:text-primary-400 font-medium">AI-assisted Full-Stack Development</span> and building application projects that integrate networking, cloud technologies, automation, system integration, databases, APIs, and user-friendly web solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sleek Stats Row (Moved above Contact Information) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-6">
+                        <!-- Experience -->
+                        <div class="group/stat flex items-center gap-2.5 p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                            <div class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-500 flex items-center justify-center text-sm font-bold shrink-0 group-hover/stat:scale-110 group-hover/stat:rotate-6 transition-all duration-300">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black text-slate-800 dark:text-slate-100 leading-tight">5+ Years</h3>
+                                <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">Experience</p>
                             </div>
                         </div>
 
-                        <!-- Role Text -->
-                        <h2 class="text-[13px] sm:text-sm md:text-[15px] font-medium text-slate-600 dark:text-slate-300 leading-relaxed">
-                            <strong class="text-slate-900 dark:text-white font-bold">An experienced professional</strong> with a strong background as <br class="hidden xl:block">
-                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.2s">Network Engineer</span>, 
-                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.4s">IT Operation Tech Support</span>, 
-                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.6s">Cloud Engineer</span>, and 
-                            <span class="role-item text-primary-600 dark:text-primary-400 font-bold tracking-tight" style="animation-delay: 0.8s">Microsoft 365 Admin</span>.
-                        </h2>
+                        <!-- Experienced Roles -->
+                        <div class="group/stat flex items-center gap-2.5 p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                            <div class="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-500 flex items-center justify-center text-sm font-bold shrink-0 group-hover/stat:scale-110 group-hover/stat:rotate-6 transition-all duration-300">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black text-slate-800 dark:text-slate-100 leading-tight">6</h3>
+                                <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">Experienced</p>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="group/stat flex items-center gap-2.5 p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-500 flex items-center justify-center text-sm font-bold shrink-0 group-hover/stat:scale-110 group-hover/stat:rotate-6 transition-all duration-300">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black text-slate-800 dark:text-slate-100 leading-tight">6+</h3>
+                                <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">Certifications</p>
+                            </div>
+                        </div>
+
+                        <!-- Projects -->
+                        <div class="group/stat flex items-center gap-2.5 p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                            <div class="w-9 h-9 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center text-sm font-bold shrink-0 group-hover/stat:scale-110 group-hover/stat:rotate-6 transition-all duration-300">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black text-slate-800 dark:text-slate-100 leading-tight">5+</h3>
+                                <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">Projects</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Short Bio / Intro -->
-                    <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                        I am an IT Infrastructure &amp; Network Engineer with over 5 years of professional experience designing, deploying, and maintaining company network infrastructure across coal mining, manufacturing, and banking industries. I'm currently open to new opportunities, international relocation (Visa Sponsorship), and remote roles. Reach out to discuss potential roles or projects.
-                    </p>
+                    <!-- Contact & Actions Row (Clean, attractive animated brand buttons) -->
+                    <div class="flex items-center gap-3.5 mb-8">
+                        <!-- WhatsApp -->
+                        <a class="social-btn social-btn-wa group" href="https://wa.me/6285179604836" target="_blank" rel="noopener noreferrer" title="WhatsApp Me">
+                            <i class="fa-brands fa-whatsapp group-hover:scale-110 transition-transform"></i>
+                            <span class="social-tooltip">WhatsApp</span>
+                        </a>
 
-                    <!-- Contact & Actions Row (Clean, attractive soft buttons) -->
-                    <div class="flex gap-3 mb-8">
-                        <a class="social-btn social-btn-wa group" href="https://wa.me/6285179604836" target="_blank" title="WhatsApp">
-                            <i class="fa-brands fa-whatsapp"></i>
+                        <!-- Email (Gmail) -->
+                        <a class="social-btn social-btn-email group" href="mailto:id.alan14prasetyo@gmail.com" title="Email Me">
+                            <i class="fa-solid fa-envelope group-hover:scale-110 transition-transform"></i>
+                            <span class="social-tooltip">Email</span>
                         </a>
-                        <a class="social-btn social-btn-email group" href="mailto:id.alan14prasetyo@gmail.com" title="Email">
-                            <i class="fa-regular fa-envelope"></i>
+
+                        <!-- LinkedIn -->
+                        <a class="social-btn social-btn-linkedin group" href="https://www.linkedin.com/in/i-am-alan/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
+                            <i class="fa-brands fa-linkedin-in group-hover:scale-110 transition-transform"></i>
+                            <span class="social-tooltip">LinkedIn</span>
                         </a>
-                        <a class="social-btn social-btn-linkedin group" href="https://www.linkedin.com/in/i-am-alan/" target="_blank" title="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                        <a class="social-btn social-btn-location group" href="https://maps.app.goo.gl/EmqGEW6amhcsNLESA" target="_blank" title="Location">
-                            <i class="fa-solid fa-location-dot"></i>
+
+                        <!-- Location (Google Maps) -->
+                        <a class="social-btn social-btn-location group relative" href="https://maps.app.goo.gl/iYnGCKpmCaCKgNey5" target="_blank" rel="noopener noreferrer" title="Location (Sragen, Central Java)">
+                            <i class="fa-solid fa-location-dot group-hover:scale-110 transition-transform"></i>
                             <span class="badge-ping animate-ping"></span>
+                            <span class="social-tooltip">Location</span>
                         </a>
                     </div>
                     
@@ -696,76 +816,63 @@
                         <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium italic mb-2.5">
                             If you would like to view or print my latest CV, please download the file below
                         </p>
-                        <a href="https://drive.google.com/open?id=1z1LPxhfNna_LY5EsuUhbGM2qLFuVoDPU&usp=drive_fs" target="_blank" class="btn-cv-download group">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            View my updated CV (.PDF)
+                        <a href="https://drive.google.com/open?id=1z1LPxhfNna_LY5EsuUhbGM2qLFuVoDPU&usp=drive_fs" target="_blank" rel="noopener noreferrer" class="btn-cv-download group/cv" title="View & Download My Updated CV (.PDF)">
+                            <div class="w-5.5 h-5.5 rounded-md bg-white/20 flex items-center justify-center text-white group-hover/cv:scale-110 group-hover/cv:rotate-[-8deg] transition-all duration-300">
+                                <i class="fa-solid fa-file-pdf text-[11px]"></i>
+                            </div>
+                            <span>View my updated CV (.PDF)</span>
+                            <i class="fa-solid fa-arrow-down-to-line text-[11px] opacity-80 group-hover/cv:translate-y-0.5 transition-transform"></i>
                         </a>
                     </div>
 
                 </div>
             </div> <!-- End Flex Content -->
 
-            <!-- Education / Summary Quote Box (Exact Match to Lampiran) -->
-            <div class="mt-8 bg-white dark:bg-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-700 relative overflow-hidden flex flex-col sm:flex-row gap-4 sm:items-start group hover:shadow-md transition-all duration-300">
+            <!-- Education / Summary Quote Box -->
+            <div class="mt-8 bg-white dark:bg-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-700 relative overflow-hidden flex flex-col md:flex-row gap-5 md:items-center justify-between group hover:shadow-md transition-all duration-300">
                 <!-- Thick blue left border effect -->
                 <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-500 rounded-l-2xl"></div>
                 
-                <div class="flex-shrink-0 pt-0.5 ml-1">
-                    <i class="fa-solid fa-graduation-cap text-primary-500 text-2xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                
-                <div class="flex flex-col gap-3">
-                    <p class="text-[13px] sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                        Bachelor's of Computer Science (Informatics Engineering) acting as a Network and Infrastructure Engineer with extensive work experience in <strong class="text-slate-900 dark:text-white font-bold">Coal Mining</strong>, <strong class="text-slate-900 dark:text-white font-bold">Manufacturing</strong>, and <strong class="text-slate-900 dark:text-white font-bold">Banking IT Services</strong> industries.
-                    </p>
+                <div class="flex items-start gap-3.5 ml-1">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-950/60 text-primary-500 flex items-center justify-center text-xl shadow-xs group-hover:scale-105 transition-transform mt-0.5">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
                     
-                    <div>
-                        <a href="https://drive.google.com/file/d/1na3gl_YNMm_qg_EgzjCzVHj1sv9S91tE/view?usp=sharing" target="_blank" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold group/link transition-colors">
-                            <i class="fa-solid fa-scroll text-amber-500 group-hover/link:rotate-12 transition-transform"></i>
-                            View graduation certificate
-                            <i class="fa-solid fa-arrow-right font-light text-primary-500 group-hover/link:translate-x-1 transition-transform"></i>
-                        </a>
+                    <div class="space-y-1.5">
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
+                            Bachelor's of Computer Science (Informatics Engineering)
+                        </h4>
+                        <p class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                            College of Informatics Management and Computer Science Jenderal Achmad Yani, Yogyakarta, Indonesia <span class="text-slate-500 dark:text-slate-400 font-normal">(graduated 2016)</span>
+                        </p>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-xs text-slate-600 dark:text-slate-400">
+                            <span class="inline-flex items-center gap-1.5 font-medium">
+                                <i class="fa-solid fa-network-wired text-primary-500 text-xs"></i> 
+                                Core focus: <strong class="text-slate-800 dark:text-slate-200">Network Technologies</strong>
+                            </span>
+                            <span class="hidden sm:inline text-slate-300 dark:text-slate-600">•</span>
+                            <span class="inline-flex items-center gap-1.5 font-medium">
+                                <i class="fa-solid fa-code text-cyan-500 text-xs"></i> 
+                                Academic background: <strong class="text-slate-800 dark:text-slate-200">Software Development</strong>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- PDF Degree Certificate Link -->
+                <div class="flex-shrink-0 self-start md:self-center ml-1 md:ml-0">
+                    <a href="https://drive.google.com/file/d/1na3gl_YNMm_qg_EgzjCzVHj1sv9S91tE/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="group/pdf inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400 border border-red-200/80 dark:border-red-800/60 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white shadow-2xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 font-semibold text-[11px] sm:text-xs" title="View Bachelor’s Degree certificate (.pdf)">
+                        <div class="w-5.5 h-5.5 rounded bg-red-100 dark:bg-red-900/60 group-hover/pdf:bg-white/20 flex items-center justify-center text-red-600 dark:text-red-300 group-hover/pdf:text-white transition-colors">
+                            <i class="fa-solid fa-file-pdf text-xs"></i>
+                        </div>
+                        <span>View Bachelor’s Degree certificate (.pdf)</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-75 group-hover/pdf:translate-x-0.5 group-hover/pdf:-translate-y-0.5 transition-transform"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
 
-        <!-- Clean Sleek Stats Row -->
-        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 reveal-on-scroll">
-            <!-- Experience -->
-            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
-                <div class="w-10 h-10 rounded-full bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 shrink-0"><i class="fa-solid fa-clock"></i></div>
-                <div>
-                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">5+ Yrs</h3>
-                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Experience</p>
-                </div>
-            </div>
-            <!-- Roles -->
-            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
-                <div class="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-500 shrink-0"><i class="fa-solid fa-briefcase"></i></div>
-                <div>
-                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">6</h3>
-                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Roles</p>
-                </div>
-            </div>
-            <!-- Certifications -->
-            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
-                <div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-500 shrink-0"><i class="fa-solid fa-award"></i></div>
-                <div>
-                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">6+</h3>
-                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Certs</p>
-                </div>
-            </div>
-            <!-- Projects -->
-            <div class="flex items-center gap-3 bg-white dark:bg-darkCard rounded-xl p-3 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 transition-transform">
-                <div class="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center text-rose-500 shrink-0"><i class="fa-solid fa-diagram-project"></i></div>
-                <div>
-                    <h3 class="text-sm font-black text-slate-800 dark:text-slate-100 leading-tight">5+</h3>
-                    <p class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wide">Projects</p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Experience Section -->
