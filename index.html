@@ -654,7 +654,7 @@
                 
                 <!-- Left Side: Compact Image container with NEW ANIMATIONS -->
                 <div class="w-full sm:w-auto flex-shrink-0 flex justify-center md:justify-start">
-                    <div class="profile-card-wrapper relative mt-8 sm:mt-10 md:mt-12">
+                    <div class="profile-card-wrapper relative mt-2 sm:mt-6 md:mt-10">
                         <!-- Decorative background pulse -->
                         <div class="absolute -inset-2 bg-gradient-to-tr from-primary-400 to-cyan-300 rounded-3xl blur-lg opacity-40 dark:opacity-20 animate-pulse"></div>
                         
@@ -678,59 +678,63 @@
                 <!-- Right Side: Content and Info -->
                 <div class="w-full md:flex-1 flex flex-col justify-start">
                     
-                    <!-- NEW: Greeting and Name with Wave and Shine Animations -->
-                    <div class="mb-5">
-                        <span class="text-lg sm:text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-1">
-                            <span class="wave-hand text-2xl">👋</span> Hi, my name is 
-                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold inline-block">
-                            <span class="animated-underline-new uppercase tracking-tight ml-1 relative inline-block">
-                                <span class="name-shine">Alan Jalu Prasetyo</span>
+                    <!-- Greeting and Name Section (Clean Modern Inline Layout with Glowing Accent) -->
+                    <div class="mb-4">
+                        <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                            <span class="text-base sm:text-lg md:text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                                <span class="wave-hand text-xl sm:text-2xl">👋</span> Hi, my name is
                             </span>
-                        </h1>
+                            <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+                                <span class="relative inline-block text-primary-600 dark:text-primary-400 font-extrabold uppercase">
+                                    Alan Jalu Prasetyo
+                                    <span class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary-500 to-cyan-400 rounded-full"></span>
+                                </span>
+                            </h1>
+                        </div>
                     </div>
 
                     <!-- Animated Professional Roles Header (Compact Inline Text matching capture 2) -->
-                    <div class="mb-3.5 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs sm:text-[13px] font-bold text-slate-700 dark:text-slate-300">
+                    <div class="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300">
                         <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.1s">
                             Network Engineer
                         </span>
-                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-xs select-none">|</span>
                         <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.3s">
                             IT Operation Technical Support
                         </span>
-                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-xs select-none">|</span>
                         <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.5s">
                             Cloud Engineer
                         </span>
-                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-sm select-none">|</span>
+                        <span class="text-primary-400 dark:text-primary-500/60 font-light text-xs select-none">|</span>
                         <span class="role-item text-slate-800 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 cursor-default" style="animation-delay: 0.7s">
                             Microsoft 365 Administrator
                         </span>
                     </div>
 
-                    <!-- Availability & Relocation Banner Badge -->
-                    <div class="mb-5 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500/10 via-primary-500/10 to-emerald-500/10 border border-amber-500/30 dark:border-amber-400/20 text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] font-semibold shadow-2xs hover:shadow-xs transition-all duration-300">
-                        <span class="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
-                            <i class="fa-solid fa-passport text-sm text-amber-500 animate-pulse"></i>
+                    <!-- Availability & Relocation Banner Badge (Shifted further downwards) -->
+                    <div class="self-start mt-3.5 sm:mt-4 mb-6.5 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-gradient-to-r from-amber-500/10 via-primary-500/10 to-emerald-500/10 border border-amber-500/30 dark:border-amber-400/20 text-[11px] sm:text-xs font-bold shadow-2xs hover:shadow-xs transition-all duration-300">
+                        <span class="inline-flex items-center gap-1.5 text-amber-700 dark:text-amber-300">
+                            <i class="fa-solid fa-passport text-xs text-amber-600 dark:text-amber-400 animate-pulse"></i>
                             Open to International Relocation (Visa Sponsorship)
                         </span>
                         <span class="hidden sm:inline text-slate-300 dark:text-slate-600 font-normal">|</span>
-                        <span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
-                            <i class="fa-solid fa-laptop-house text-sm text-emerald-500"></i>
+                        <span class="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-300">
+                            <i class="fa-solid fa-laptop-house text-xs text-emerald-600 dark:text-emerald-400"></i>
                             Open for Remote Jobs
                         </span>
                     </div>
 
                     <!-- Short Bio / Intro Box -->
-                    <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 border-l-[6px] border-l-primary-500 dark:border-l-primary-400 shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-5 mb-6 group">
-                        <div class="space-y-2.5">
-                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 border-l-[6px] border-l-primary-500 dark:border-l-primary-400 shadow-sm hover:shadow-md transition-all duration-300 p-3.5 sm:p-4.5 mb-6 group">
+                        <div class="space-y-2">
+                            <p class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed">
                                 I am currently based in <strong class="text-slate-900 dark:text-white font-semibold">Sragen, Central Java, Indonesia</strong>. I work full-time for one of Indonesia’s coal mining companies as an <span class="text-primary-600 dark:text-primary-400 font-semibold">IT Network Infrastructure Services</span>. With more <span class="font-semibold text-slate-800 dark:text-slate-200">5+ years of professional experience</span> across the coal mining, manufacturing, and banking industries, I specialize in Network Engineer, IT Operations Support, IT Helpdesk services, Microsoft 365 Administration, and Cloud Technologies.
                             </p>
-                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <p class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed">
                                 I have supported mission-critical environments across Head Office, mining sites, remote facilities, mining production and distribution operations, with a strong focus on network availability, security, business continuity, and efficient day-to-day operations.
                             </p>
-                            <p class="text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <p class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed">
                                 In addition to my core expertise, I am currently expanding my skills in <span class="text-primary-600 dark:text-primary-400 font-medium">AI-assisted Full-Stack Development</span> and building application projects that integrate networking, cloud technologies, automation, system integration, databases, APIs, and user-friendly web solutions.
                             </p>
                         </div>
